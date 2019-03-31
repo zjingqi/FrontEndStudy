@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .content{    
+            position: relative;        
+            width: 1200px;
+            height: 500px;
+            margin: 10px auto;
+            background-color: beige;
+            overflow: hidden;
+        }
+            
+        .active{
+            position: relative;
+            margin-left: 300px;
+            width: 500px;
+            height: 40px;
+        }
+        input{
+            position: absolute;
+            left:30px;
+            width: 300px;
+            height: 20px;
+            border: 2px solid blue;
+        }
+        button{
+            position:absolute;
+            width: 60px;
+            height: 25px;
+            background-color: aquamarine;
+            border: none;
+            left: 20px;
+
+        }
+        .btn1{
+            left: 350px;
+        }
+        .btn2{
+            left:430px;
+        }
+        button:hover{
+            cursor:pointer;
+            width: 60px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+
+    </div>
+    <div class="active">
+        <input type="text" name="cont">
+        <button class="btn1">发送</button>
+        <button class="btn2">清屏</button>
+    </div>
+
+    <script src="third.js"></script>
+</body>
+</html>
