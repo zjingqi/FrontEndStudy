@@ -15,24 +15,34 @@
     <h1>单个用户</h1>
     <div id="user1"></div>
     <h1>所有用户</h1>
-
-
     <script>
-   
-
-    document.getElementById('button1').addEventListener('click',
-    loadText);
-    function loadText(){
-        var xhr=new XMLHttpRequest();
-        
-        xhr.open('GET','jax.txt',true);
-        xhr.onload=function(){
-            xhr.setContentType("text/plain");
-            console.log(this.responseText);
+    // var arr=[123, "meili", "123", "mogu", 123];
+        Person.prototype.name='abc';
+        function Person(){
+            age:15;
         }
-        xhr.send();
-    }
+        var obj={
+            name:'sunny'
+        }
+        var person=new Person();
+       person.age=4;
     </script>
+
+
+    <!-- <script> 
+    // document.getElementById('button1').addEventListener('click',
+    // loadText);
+    // function loadText(){
+    //     var xhr=new XMLHttpRequest();
+        
+    //     xhr.open('GET','jax.txt',true);
+    //     xhr.onload=function(){
+    //         xhr.setContentType("text/plain");
+    //         console.log(this.responseText);
+    //     }
+    //     xhr.send();
+    // }
+    // </script>
     <!-- <script type="text/javascript" src="jax.js"></script> -->
     <!-- <script type="text/javascript" src="jax.json?callback=train"></script>   -->
 </body>

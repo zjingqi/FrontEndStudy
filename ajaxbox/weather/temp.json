@@ -1,0 +1,104 @@
+{
+	"aa":"111",
+	"result": {
+		"sk": {
+			"temp": "20",
+			"wind_direction": "西风",
+			"wind_strength": "5级",
+			"humidity": "40%",
+			"time": "09:51"
+		},
+		"today": {
+			"temperature": "10℃~21℃",
+			"weather": "多云",
+			"weather_id": {
+				"fa": "01",
+				"fb": "01"
+			},
+			"wind": "东风微风",
+			"week": "星期四",
+			"city": "南阳",
+			"date_y": "2019年03月28日",
+			"dressing_index": "较舒适",
+			"dressing_advice": "建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。",
+			"uv_index": "弱",
+			"comfort_index": "",
+			"wash_index": "较适宜",
+			"travel_index": "较适宜",
+			"exercise_index": "较适宜",
+			"drying_index": ""
+		},
+		"future": [{
+			"temperature": "10℃~21℃",
+			"weather": "多云",
+			"weather_id": {
+				"fa": "01",
+				"fb": "01"
+			},
+			"wind": "东风微风",
+			"week": "星期四",
+			"date": "20190328"
+		}, {
+			"temperature": "9℃~22℃",
+			"weather": "多云",
+			"weather_id": {
+				"fa": "01",
+				"fb": "01"
+			},
+			"wind": "东北风3-5级",
+			"week": "星期五",
+			"date": "20190329"
+		}, {
+			"temperature": "5℃~18℃",
+			"weather": "多云",
+			"weather_id": {
+				"fa": "01",
+				"fb": "01"
+			},
+			"wind": "东北风3-5级",
+			"week": "星期六",
+			"date": "20190330"
+		}, {
+			"temperature": "4℃~19℃",
+			"weather": "晴转多云",
+			"weather_id": {
+				"fa": "00",
+				"fb": "01"
+			},
+			"wind": "东风微风",
+			"week": "星期日",
+			"date": "20190331"
+		}, {
+			"temperature": "8℃~19℃",
+			"weather": "多云",
+			"weather_id": {
+				"fa": "01",
+				"fb": "01"
+			},
+			"wind": "西南风微风",
+			"week": "星期一",
+			"date": "20190401"
+		}, {
+			"temperature": "4℃~19℃",
+			"weather": "晴转多云",
+			"weather_id": {
+				"fa": "00",
+				"fb": "01"
+			},
+			"wind": "东风微风",
+			"week": "星期二",
+			"date": "20190402"
+		}, {
+			"temperature": "4℃~19℃",
+			"weather": "晴转多云",
+			"weather_id": {
+				"fa": "00",
+				"fb": "01"
+			},
+			"wind": "东风微风",
+			"week": "星期三",
+			"date": "20190403"
+		}]
+	},
+	"error_code": 0
+}

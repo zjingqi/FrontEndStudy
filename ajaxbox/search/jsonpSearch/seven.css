@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration:none;
+}
+.imgIcon{
+    position:absolute;
+    width: 300px;
+    height: 160px;
+    top: 50px;
+    left: 50%;
+    margin-left: -150px;
+    background-image: url(icon.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.search{
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 50%;
+    top: 250px;
+    margin-left: -150px;
+}
+.img{
+    position: absolute;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    background-image: url(search.png);
+    background-image: 100%;
+    background-repeat: no-repeat;
+}
+.img:hover{
+    cursor: pointer;
+}
+.search-text{
+    display: none;
+
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    height: 40px;
+    margin-left: -150px;
+    /* border: 1px solid blue; */
+}
+
+input{
+    position: absolute;
+    width: 600px;
+    height: 40px;
+    margin-left: -150px;
+    border: 1px solid red;
+    border-radius: 30px;
+    outline: none;
+    text-indent: 0.5em;
+    font-size: 20px;
+} 
+button{
+    display: inline-block;
+    position: absolute;
+    left: 400px;
+    top: 3px;
+    width: 30px;
+    height: 30px;
+    background-color:transparent;
+    border-color: transparent;
+    background-image: url(search.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+span::hover{
+    cursor: pointer;
+}
+
+.foot{
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    left: 50%;
+    top: 300px;
+    margin-left:-150px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: coral;
+    font-size: 20px; 
+    text-align: center;
+    line-height: 30px;
+}
+.searching{
+    position: relative;
+    width: 80%;
+    left: 20%;
+    top: 150px;
+    /* border: 1px solid purple; */
+}
+.search-ul{
+    width: 800px;
+    height: 120px;
+}
+.search-li{
+    padding-top: 20px;
+    padding-left: 10px;
+    margin-top: 10px;
+    width: 700px;
+    height: 120px;
+    background-color: darkseagreen;
+    color: white;
+}
