@@ -1,0 +1,206 @@
+*{
+padding: 0;
+margin:0;
+}
+.wrapper{
+    position: relative;
+    height:2000px;
+    width: auto;
+    background-color: lightgray;
+    z-index:1;
+    /* border: 2px solid blue; */
+}
+.item{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width:1350px;
+    height: 100px;
+    background-color:burlywood;
+    z-index: 2;
+}
+.firstPage{
+    position:absolute;
+    top: 100px;
+    height: 500px;
+    width:90%; 
+    left: 5%;
+    background-color:antiquewhite;
+    z-index:1;
+
+}
+.goods{
+    position:absolute;
+    height: 500px;
+    width: 90%;
+    left:5%;
+    top: 600px;
+    background-color: darkseagreen;
+    z-index:1;
+
+}
+.toBuy{
+    position: absolute;
+    height: 800px;
+    width: 90%;
+    left:5%;
+    top: 1100px;
+    background-color: rgba(248, 190, 151, 0.801);
+    z-index:1;
+
+}
+.aboutMe{
+    position: absolute;
+    height: 100px;
+    width: 90%;
+    left: 5%;
+    top: 1900px;
+    background-color: brown;
+}
+.item>img{
+    position:absolute;
+    left: 70px;
+    width: 200px;
+    height:100px;
+    border-radius: 50%;
+}
+.liList{    
+    position:absolute;
+    right: 100px;
+    top: 0;
+    width: 500px;
+    height: 100px;
+}
+button{
+
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 100px;
+    height: 50px;
+    background-color:transparent;
+    border:0px;
+    font-size:25px;
+    color: aliceblue;
+    outline: none;
+}
+button:hover{
+    cursor: pointer;
+    background-color: brown; 
+}
+.firstPage>img{
+    width: 100%;
+    height: 100%;
+}
+.goods>.liList2 li{
+    margin-top: 50px;
+    font-size: 25px;
+    list-style: none;
+
+}
+.goods>.liList2 li:nth-child(1){
+    color: antiquewhite;
+    text-indent: 2em;
+}
+.liList2 li:nth-child(2){
+    color: azure;
+    margin-left: 200px;
+}
+.liList2 li:nth-child(3){
+    color: moccasin;
+    margin-left: 300px;
+}
+.liList2 li:last-child{
+    color: lavender;
+    margin-left: 400px;
+}
+.tag1{
+    border: 5px solid white;
+    border-left-color: transparent;
+    border-right-color:transparent;
+    border-top-color:transparent;
+}
+.tag1>p{
+    font-size: 50px;
+    text-align: center;
+    color: white;
+}
+.content{
+    position:absolute;
+
+    width:100%;
+    height: 800px;
+}
+.leftContent{
+    position:absolute;
+    width:  700px;
+    height: 800px;
+}
+.leftContent div{
+    position: absolute;
+    height: 50px;
+    width: 500px;
+    left: 100px;
+    line-height: 70px;
+}
+ .leftContent input{
+    width: 500px;
+    height: 40px;
+    font-size: 30px;
+    outline: none;
+    color: dimgrey;
+    border: 3px solid white;
+    background-color:transparent; 
+    border-left-color: transparent;
+    border-right-color:transparent;
+    border-top-color:transparent;
+}
+
+.leftContent div:nth-child(1){
+    top:0px;
+
+}
+ .leftContent div:nth-child(2){
+    top:50px;
+} 
+.leftContent div:nth-child(3){
+    top:100px;
+}
+.leftContent div:nth-child(4){
+    top:150px;
+}
+.leftContent div:nth-child(5){
+    top:200px;
+}
+.leftContent div:nth-child(6){
+    top:250px;
+}
+.leftContent div:nth-child(7){
+    top:300px;
+}
+.leftContent div:nth-child(8){
+    top:350px;
+}
+.leftContent div:nth-child(9){
+    top:500px;
+}
+#ok input{
+    border-bottom-color:transparent;
+    border: 3px solid gray; 
+}
+.dispear{
+    display: none;
+}
+input[name='submit']:hover{
+    color: white;
+    cursor: pointer;
+}
+.rightContent{
+    position: absolute;
+    left: 700px;
+
+}
+.rightContent p{
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
