@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+	<title>知识点</title>
+	<style>
+	</style>
+</head>
+<body>
+	<h2>1.渲染模式</h2>
+		<p>IE6之后按照标准生产浏览器，各种浏览器加入标准模式且保留了以前的模式;</p>
+		<h3>渲染模式不同：</h3>
+			<P>1.盒模型解析方式不同：</P>
+			<P>   设置width=100;</P>
+			<P>   标准模式：width=width,不包括border,margin,padding</P>
+			<P>   混杂模式：width=border+padding+content.width;</P>
+			<P>2. 标准模式：行内元素不能设置宽高</P>
+			<P>   混杂模式：行内元素可以设置宽高</P>
+			<P>3.margin值</P>
+			<P>	标准模式：margin:0 auto 水平居中</P>
+			<P>	混杂模式：没效果</P>
+	<h2>穿插知识点</h2>
+		<p>&lt;label&gt;用于绑定标签label for属性</p>
+		<p>不是先天有的属性是不能通过“.”来设置只能通过setAttribute/getAttribute，先天有的可以通过“.”来设置</p>
+		<p>先天就有的属性能叫特性，先天没有的叫属性，属性包括特性</p>
+		<p>图片预加载img.onload之后再在图片插入文档</p>
+		<p>文档碎片</p>
+		<p>cdn缓存服务器</p>
+	<label for="demo" type="text">usename:</label>	
+	<input id="demo" type="text" name="name">
+	<ul></ul>
+	<div class="demo item             aaa">
+		<p class="demo  "></p>
+	</div>
+</body>
+<script >
+	
+	Array.prototype.slice = function(a,b){
+		var newArr=[];
+		for(var i = 0;i < b;i++){
+			newArr.push(arr[i]);
+		}
+		return newArr;
+	}
+	var ul=document.getElementsByTagName('div')[0];
+	var ofrag=document.createDocumentFragment();
+
+	for(var i=0;i<1000;i++){
+		str+='<li> + i + </li>';
+		var li=document.createElement('li');
+		li.innerHTML=i;
+		ofrag.appendChild('li');
+	}
+	ul.innerHTML=str;
+	ul.appendChild(ofrag);
+	var str=Math.floor(Math.random()*3+2);//[2,5)
+	
+	//getByClassName 封装一个获取具有某class属性值的所有元素的方法
+	Document.prototype.getByClassName=function(className){
+		var allDomArr=Array.prototype.slice.call(document.getElementsByTagName('*'),0);//获取所有标签元素，并把得到的类数组转化成数组
+		var filterArr=[];
+		
+		function dealClass(dom){//规范格式把相邻多个空格替换为一个空格
+			var reg=/\s+/g;
+			var arrClassName=dom.className.replace(reg,' ').trim();//提取所有className
+			return arrClassName;
+		}
+		allDomArr.forEach(function(ele, index){
+			var itemClassArr=dealClass(ele).split(' ');	//每个元素的class属性值存进数组
+			for(var i = 0;i < itemClassArr.length; i++){
+				if(itemClassArr[i]==className){
+					filterArr.push(ele);
+					break;
+				}
+			}
+		})
+		return filterArr;
+	}
+	var oClass=document.getByClassName('demo')
+	console.log(oClass);
+
+</script>
+</html>

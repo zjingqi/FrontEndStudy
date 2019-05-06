@@ -1,0 +1,76 @@
+<!-- 
+1.JS线程与GUI线程互斥
+2.普通任务（同步任务）会进入到主线程中（包含执行栈），在执行栈中执行任务，
+	栈里面执行完后，读取任务队列中的结果。有的任务的话拿进执行栈内执行
+
+ 异步任务会进入event Table注册一个函数，等到真正该到执行时（如设置的定时器到时间时，请求数据成功返回时，dom事件要被用户触发时），会吧这个任务放到执行队列中（event queue）。
+ 执行时：创建一个帧（包含局部变量，形参..）就是预编译过程，把这一帧压入栈中，执行完弹出栈。
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>										
+	call/apply模拟实现:
+		在show方法中改变this指向；
+			<p>show.call(obj)==></p>
+			<p>obj.show=show</p>
+			<p>obj.show();</p>
+			<p>delete obj.show</p>
+<script>
+	var value='window'
+	var obj={
+		value:'obj'
+	}
+	function show(name,age){
+		return{
+			name:name,
+			age:age
+		}
+	}
+	// var result=show.call(obj,'cg',18);
+	Function.prototype.newcall=function(){
+		// aaa.fn=this//这个this是show.call(obj)的show
+		// aaa.fn()
+		// delete aaa.fn
+		var cst=arguments[0]||window//this指向
+		cst.fn=this
+		var args=[];
+		for(var i=1;i<arguments.length;i++){
+			args.push('arguments['+i+']')
+		}
+		var result=eval('cst.fn('+args.join(',')+')')
+		delete cst.fn
+		return result
+
+	}
+	var res=show.newcall(obj,'dd','33');
+
+
+
+	Function.prototype.newapply=function(cts,arr){
+		console.log(this);
+		var cst=cst||window
+		cst.fn=this
+		if(!arr){
+			var result=cst.fn()
+			delete cst.fn
+			return result
+		}else{
+			var args=[];
+			for(var i=0;i<arr.length;i++){
+				args.push('arr['+i+']')
+			}
+			var result=eval('cst.fn('+args.join(',')+')')
+			var temp='cst.fn('+args.join(',')+')';
+			delete cst.fn
+			return result
+		}
+	}
+	var res1=show.newapply(obj,['aa','18'])
+
+</script>
+</body>
+</html>

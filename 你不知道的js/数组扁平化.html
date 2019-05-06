@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数组扁平化</title>
+</head>
+<body>
+<script>
+	var arr=[1,2,[3,4],{},[1,2,[3,4],1],[[[5,6,7],8],1,2],[{},{a:1},1],4,5];
+	function isArray(obj){
+		return Object.prototype.toString.call(obj)=='[Object,Array]';
+	}
+	function flattem(arr){
+		var arr=arr||[];
+		var resArr=[];
+		var len=arr.length;
+		for(var i=0;i<len;i++){
+			if(isArray(arr[i])){
+				resArr=resArr.concat(flattem(arr[i]));
+			}else {
+				console.log(arr[i]);
+				resArr.push(arr[i]);
+			}
+		}
+		return resArr
+	}
+	flattem(arr);
+// console.log(flattem(arr));
+	// Array.prototype.flattem = function() {
+	// 	var resArr=[];
+	// 	this.forEach(function(item){
+	// 		Object.prototype.toString.call(item)=='[object Array]'?resArr=resArr.concat(item.flattem()):resArr.push(item);
+	// 	})
+	// 	return resArr
+	// }
+	function flattem1(arr){
+		var arr=arr||[];
+		return arr.reduce(function(prev,next){
+			return Object.prototype.toString.call(next)=='[object,Array]'?prev.concat(flattem(next)):prev.concat(next)
+		},[])
+	}
+	const flattem2= arr=> arr.reduce((prev,next)=> Object.prototype.toString.call(next)=='[object,Array]'?prev.concat(flattem(next)):prev.concat(next),[]);
+
+			console.log(flattem2(arr));
+</script>
+
+</body>
+</html>

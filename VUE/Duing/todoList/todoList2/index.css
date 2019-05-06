@@ -1,0 +1,91 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+}
+.page-top{
+	height: 50px;
+	background-color:#991111;
+	line-height: 50px;
+	text-align: center;
+}
+.main{
+	padding: 30px;
+	position: absolute;
+	left: 400px;
+}
+.task-input{
+	margin-top: 10px;	
+	height: 30px;
+	width: 600px;
+}
+.task-count{
+	margin-bottom: 20px;
+}
+.task-count li{
+	float: left;
+}
+.firstli{
+	color: red;
+	size: 14px;
+	margin-left:0px;
+	margin-right: 180px;
+}
+a{
+	margin-left: 25px;
+	color: black;
+}
+.task-count::after{
+	content: '';
+	display: inline-block;
+	clear: both;
+}
+.tasks{
+	padding-top: 10px;
+	position: absolute;
+	left: 60px;
+}
+.list{
+	margin-top: 5px;
+	height: 25px;
+	width: 400px;
+	background-color: lightblue;
+	color: purple;
+}
+
+.destory{
+	float: right;
+	background-color: lightblue;
+	height: 25px;
+	width: 50px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	border: none;
+	outline:none
+}
+.destory:hover{
+	cursor: pointer;
+}
+.list{
+	display: inline-block;
+	height: 25px;
+	/*overflow: hidden;*/
+}
+.view{
+	height: 25px;
+}
+.list>input{
+	border:1px solid pink;
+	height: 23px;
+	width: 397px;
+	outline: none;
+}
+.completed{
+	background-color: lightgrey;
+	color: grey;
+}
+
+.editing>div{
+	display: none;
+}

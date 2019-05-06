@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body> 
+		$()里面可以写css选择器，原生dom，jquery对象，null/undefined，番薯function(){},selected/content。。。
+		$('ul>li:first')
+		$('ul>li:last')
+		$('ul>li:eq(2)');//$('li').eq(1)
+		$('ul>li:odd/even');
+		$('li').filter('.box/[title=hello]').css()
+		not();与filter用法相同，作用相反
+		$('li').filter(function(index){return index%3==0}).css('..')
+		has();谁有$('li').has('p').css(..);
+		find();找谁；与has主语不同
+		eq();
+		is()->true/false
+		css()取值相当于getCommputed，赋值相当于dom.style.**
+		css()赋值赋一组 取值取一个
+		attr() 主要依赖document对象的getAttribute()和setAttribute()方法->值
+		prop()主要依赖js原生对象获取和设置方式 ->状态true/false
+		next();下一个兄弟结点；prev()上一个兄弟结点,idnex()索引
+	----------
+		addClass()   removeClass() 参数可以是function
+		$('li').addClass(function(index){
+			 if(index % 3 == 0){
+				return 'aaa';
+			 }
+		})
+		$('li').toggleClass('aaa');//切换
+		A.insertBefore(B)//A插入到B前面，A被返回
+		B.before(A)//A插入到B前面，B被返回
+		$('p').appendTo($('ul'))//返回p
+		$('ul').append($('p'))//返回ul；
+		prependTo prepend插入到第一个元素前
+		remove() detach() //吧元素删除后返回
+		remove() 返回的是dom元素
+		detach() 事件也返回了；
+		on() 注册事件;off()解除绑定
+		$('.item').on('click','p'(事件源),data([]/{}),function(e){});
+		e->e.pageX相对于文档 e.clientX相对于浏览器窗口
+		e.which 哪个键或按钮 e.button 哪个鼠标按键被按下
+		e.preventDefault();e.stopPropagation() return false;
+		innerWidth()  content+padding
+		outerWidth()  content padding border
+					  参数为true时带有margin;
+		创建dom:jQuery创建注册窗口
+				$('<div></div>')
+		$('.item').offset()//找到当前元素位置相对于当前视口/没定位情况
+		$('item').position()找最近的有定位的父级，如果其所有父元素都是默认定位(static))则与offset()一样
+		
+		end()回退操作
+		closest()最近的祖先节点
+		siblings
+		prevAll()当前元素上面的所有兄弟节点
+		nextAll()
+		nextUntil() 掐头去尾选中元素
+		clone()克隆var a =  $('').clone() //传true事件也被克隆
+		$('li').wrapper($('p'));li外包裹了p
+		$('li').wrapInner('<p>');li里面包裹了p
+		$('li').wrapper(function(index){})
+		wrapAll()会破坏结构
+		unwrap();
+	
+		$('li').eq(0).add($('li').eq(4)).css({})
+		$('li').slice(0,2)算头不算尾
+		$('form').serialize()串联表单数据 serializeArray拼成数组
+		animate()//速率插件jquery.easing.js
+		$('div').animate({left:300},1000,'swing/linear');
+		$('#demo').stop()停止当前运动
+		$('#demo').stop(,)//第二个参数 是否到达当前目标点：true到，false不到
+		//第一个参数：是否停止后续运动 true停止，false不停止
+		delay(3000)延迟
+		
+		sliderUp(speed,callback)隐藏被选元素
+		sliderDown()隐藏被选元素
+		slideToggle(speed,callback)切换（toggleClass）
+		fadeIn()淡入淡出
+		triggle('aaa'，[100, ])触发自定义或系统的事件aaa,$('').on('aaa',function(event,1)){console.log(a)}
+	
+		$.type()定义在jQuery函数上、工具方法
+		$('div').html()定义在原型上，实例方法
+		$.makeArray(obj)吧类数组便趁数组
+		$.fn.extend({//扩展工具类
+			leftTrim : function(){
+
+			}
+		})
+		$.extend(true,obj1,obj2);深拷贝
+
+		var cb = $.Callback();unique/memory/stopOnFalse
+		cb.add(fn1,fn2);往队列里添加函数
+		cb.fire();按顺序执行回调队列里的函数
+
+		var dtd = $.Deferred()延迟对象,相当于有状态的callback
+		resolve成功/reject失败/notify进行中
+		dtd.done().fall().progress()
+	<script src="./compressJquery.js"></script>
+	<script>
+		function aa(){
+			var dtd = $.Deferred();
+			dtd.resolve();//成功的状态
+			return dtd.promise();
+		}
+		function bb(){
+			var dtd = $.Deferred();
+			dtd.reject();
+			return dtd.promise();
+		}
+		var cb = aa();
+		var cb2 = bb();
+		$.when(cb,cb2).done(function(){
+			console.log('ok');
+		})
+		.fall(function error(){
+			console.log('error');;			
+		})
+		.progress(function (){
+			console.log('doing');
+		})
+	</script>
+</body>
+</html>

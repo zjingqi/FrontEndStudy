@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>柯里化</title>
+</head>
+<body>
+<!-- 用途：. 参数复用，简化代码结构，提高体统的维护性，一个方法一个参数，强制了功能的单一性，很自然的做到了功能内聚，降低耦合
+优点：降低代码的重复，提高代码的适用性。
+性能问题：
+	存取arguments对象通常要比存取命名参数要慢一点
+	一些老版本的浏览器在arguments.length的实现上是相当慢的
+	使用fn.apply( … ) 和 fn.call( … )通常比直接调用fn( … ) 稍微慢点
+	创建大量嵌套作用域和闭包函数会带来花销，无论是在内存还是速度上 -->
+	<script>
+		var oEle=document.getElementById('ele');
+		var child=oEle.children;
+		console.log(child);
+		child=oEle.childNodes;
+		console.log(child);
+
+	/*	function add(a,b,c,d){
+			return a+b+c+d;
+		}
+
+		function FixedParamasCurry(fn){
+			var _arg=[].slice.call(arguments,1);//[1,2]
+			return function(){//里层函数
+				var newArg=_arg.concat([].slice.call(arguments,0));//[1,2,3,4]
+				console.log("执行期望");
+				return fn.apply(this,newArg);//this代表当前的执行环境:return function(){...}，执行里层函数时才会有这步 
+			}
+		}
+		
+		//固定参数的函数
+		function Curry(fn,length){
+			var length=length||fn.length;
+			return function(){
+				if(arguments.length<length){//传的参数是否小于需要的参数
+					var combined=[fn].concat([].slice.call(arguments,0));//[fn,1,2]
+					return Curry(FixedParamasCurry.apply(this,combined),length-arguments.length);//固定长度-此次传的参数的长度
+				}else{
+					console.log('执行目的之');
+					return fn.apply(this,arguments);//开始执行里面返回的里层函数
+				}
+			}
+		}
+		var newAdd=Curry(add);
+		var nA1=newAdd(1,2);
+		var nA11=nA1(3);
+		var nA12=nA11(4);
+		console.log(nA12);
+		var res=newAdd(1,2)(3,4);
+		console.log(res);
+		*/
+	</script>
+</body>
+</html>
