@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        @font-face{
+            font-family:'diyfont';
+            src: url('diyfont.eot');/*IE9+*/
+            src: url('diyfont.eot?#iefix') format('embedded-opentype'),/*IE6-8*/
+                 url('diyfont.woff') format('woff'),/* chrome firefox*/
+                 url('diyfont.ttf')  format('truetype'), /*chrome,firefox opera,Safari android ios4.2+*/
+                 url('diyfont.svg#fontname') format('svg');/* ios4.1-*/
+        }
+        #demo{
+
+            margin:100px;
+            width: 300px;
+            height: 300px;
+            background:blue;
+            /* box-shadow:10px 10px 3px 10px;  */
+            background:radial-gradient(circle at 50% , red 10%, green 20%,yellow 50%, blue 99%,transparent 100%)
+        }
+    </style>
+
+</head>
+
+
+<body>
+    
+
+1.  box-shadow:---盒子阴影/
+        [x轴偏移量][y轴偏移量][阴影模糊半径][阴影扩展半径][阴影颜色][投影方式]
+2.  text-shadow文字阴影
+        s[x轴偏移量][y轴偏移量][][][阴影颜色]
+3.  渐变：
+    线性渐变：background: linear-gradient(to top left 10%, red, green,,,);
+                        linear-gradient(133deg, red, green);
+    径向渐变：radial-gradient(circle 100px at 50% , red, green)
+4.  border-image:url('') 100 round; 
+    stretch
+    banckground-origin: border-box//默认从padding开始
+    background-clip:content;裁剪
+    word-wrap:break-word;换行
+    -webkit-background-clip:text;//给文字加背景颜色
+    -webkit-text-fill-color:transparent;
+    background-size:;
+    background-position:center;
+
+CSS3
+    li[class^='la'] 以'la'开头的class值元素laed,la
+    li[class$='la'] 以'la'结尾的class值的元素aala
+    li[class*='la'] 包含'la'字段的class值的元素 aalaa;
+    
+    伪类选择器
+        :root 根标签
+        :not() 否定选择器li:not([class*='la']){}
+        :empty{} 空标签选择器,内容是空的标签，li:empty(){}
+     **伪元素内的内容不占dom结构，被认为是空**
+        target:目标元素选择器<a href="#demo"></a>点击锚点到demo位置
+                .item:target选中被锚点到的元素
+        li:first-child：{}某元素的第一个子元素是li的元素，li必须位于body的第一个子元素才能选中
+        li:last-child:
+        li:nth-child(index/even/odd/2n+1){}n从0开始
+        li:nth-last-child(){}
+        
+        body li:first-of-type{}找这一类型的第一个li不一定位于body中的第一个元素
+        :last-of-type{}
+        :nth-of-type(){}
+        :nth-last-of-type(){}
+
+        li:only-child{}
+        :only-of-type{}这一类型下的唯一一个
+
+        :enable{}表单元素当中,可不可用iinput:enable
+        :disable{}
+
+        :checked{}  选中的
+        :read-only只读选择器、
+        :read-write
+        ::first-letter
+        ::first-line{}
+        ::selection  某标签下被选中的元素
+        user-select:none  不能被选择
+    兄弟结点:
+        A+B 和A紧挨着的B元素
+        A~B A下面的所有B
+
+        -----------------\
+    transform:rotateX/Y/Z(10deg);旋转///////
+              rotate3d(1,1,1,45deg);
+            :scaleX/Y/Z(2);缩放
+             scale(X,Y);
+             scale3d()
+             skewX/Y();对元素进行倾斜扭曲
+             skew(X/0,Y/0);
+             translateX/Y/Z(100px)平移
+             translate(50%,50%)平移自身的一半
+             transform-origin:top/bottom left/right;改变中心角
+
+    transition 过渡动画
+              ：width 2s linear/ease , top 2s linear ;同时
+
+    关键帧：@keyframes move{
+            1. 0%{
+                    left:200px;
+                }
+                50%{
+                    background:green;
+                }
+                100%{
+                    left:300px;
+                }
+            2.from{
+
+              }
+              to{
+
+              }
+            }
+            alternate:奇数次正向
+            alternate-reverse:奇数次反向
+        animation:move 5s linear  2s reverser num;
+        animation:move 5s linear reverser forwards;运动完停在最后一个关键帧位置
+        animation:move 5s linear reverser backwards;是否立即使用关键帧
+        animation:move 5s linear 2s reverser both;即立即执行又停在了最后一个关键帧位置
+  绑定事件： item.style.animationPlayState='paused'暂停
+                                          'running'运行
+
+            
+    <div id="demo"></div>
+</body>
+</html>

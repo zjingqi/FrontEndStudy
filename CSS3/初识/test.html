@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style:none;
+        }
+        .wrapper{
+            position:relative;
+            width: 400px;
+            height: 400px;        
+            text-align: center;
+            margin: 0 auto;
+        }
+        input{            
+            width: 30px;
+            height: 30px;
+        }
+        .wrapper div{
+            position:absolute;
+            display: none;
+            width: 400px;
+            height:370px;
+        }
+        .wrapper div:nth-of-type(1){
+           background:coral; 
+        }
+        .wrapper div:nth-of-type(2){
+            background:darkcyan;
+        }
+        .wrapper div:nth-of-type(3){
+            background:darkseagreen;
+        }
+        .wrapper input:checked + div{
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+   <div class="wrapper">
+       <input type="radio" name="aa" checked>
+       <div>a</div>
+       <input type="radio" name="aa">
+       <div>b</div>
+       <input type="radio" name="aa">
+       <div>c</div>
+
+   </div>
+</body>
+</html>
