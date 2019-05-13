@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            box-sizing:border-box;
+            font-size:20px;
+            column-gap:20px;缝隙宽度
+            column-rule:50px solid red;设置缝隙
+        }
+        h1{
+            column-span:all;//标题贯穿所有列
+        }
+
+    </style>
+</head>
+<body>
+    1.行级元素可以设置宽高
+    2.margin：0 auto 不能用
+
+    弹性盒子：
+        display: flex;
+        flex-grow: 1
+        主轴：X轴
+        侧轴/交叉轴：Y轴
+        项目上的属性：
+            flex-grow: 1;按比例放缩;属性定义剩余空间的分成。默认为0，即如果存在剩余空间，也不放大。
+            flex-shrink: 1;默认存在；把超出的均分砍掉
+            flex-basis:伸缩基准值（主轴上）
+        order:number;
+        
+    align-self:flex-end/center/baseline/stretch;每个项目
+
+    flex-direction: row; /row-reverse/...设置主轴方向
+    flex-wrap：wrap/nowrap/wrap-reverse; 是否换行
+    flex-flow: <flex-direction>|<flex-wrap>;
+    justify-content:flex-left/space-between/space-around;主轴上的对齐方式
+    align-items:所有的项目在侧轴上的对齐方式
+    aligin-content:多根轴的对齐方式
+    
+    响应式布局：根据你屏幕的尺寸响应出不同的布局
+        媒体查询是对不同设备提供不同样式而定一种方式，他为每种类型的用户提供了最佳的体验
+        引入方式：<link rel="stylesheet" media="all and (max-width:'800px')" href="">
+   
+        
+    重排、重绘
+        重排：当布局改变需要重新计算尺寸位置时，这正是布局阶段要做的
+                也成回流，每个页面至少进行一次回流--就是页面第一次加载的时候。
+        重绘：rend tree中的一些元素需要更新属性，这些属性只影响元素的外观，风格，不影响布局时
+   chrome--Performance--
+   页面从加载到绘制出来每个阶段经历的时间：蓝色：网络通信和HTML解析
+                                        黄色 js执行
+                                        紫色 重排：样式计算和布局
+                                        绿色：重绘
+   
+   触发重排的方法: offsetTop,offsetLeft ,offsetWidth,scrollLeft,lientTop
+        getComputedStyle()
+   读操作放在一起，写操作放在一起；
+   写在类中；
+
+   perspective-origin: 600px/top  景深
+   backface-visibility: visible| hidden 背面隐藏
+
+        3d变化，元素在转，坐标轴也在变
+   <style>
+        @media screen and (max-width:800px){
+            ...
+        }
+    </style>
+        <div class="wrapper">
+        <h1>aaaa</h1>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+
+</body>
+</html>

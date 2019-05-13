@@ -27,6 +27,39 @@
             /* box-shadow:10px 10px 3px 10px;  */
             background:radial-gradient(circle at 50% , red 10%, green 20%,yellow 50%, blue 99%,transparent 100%)
         }
+
+        .demo1{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background:chocolate;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 1;
+        } 
+        .demo2{
+             position: absolute; 
+             left: 50%;
+            top:50%; 
+            transform: translate(-50%,-50%);
+            transform-origin:0 0;
+            animation: move 10s linear 10;
+            width: 200px;
+            height: 200px;
+            background:darkcyan;
+            opacity: 0.6;
+        }
+
+        @keyframes move{
+            0%{
+                transform:rotateZ(0deg) translate(-50%,-50%);
+            }
+            100%{
+                transform: rotateZ(360deg) translate(-50%,-50%);
+            }
+        }
     </style>
 
 </head>
@@ -134,6 +167,8 @@ CSS3
                                           'running'运行
 
             
-    <div id="demo"></div>
+    <div class="demo1">
+        <div class="demo2"></div>
+    </div>
 </body>
 </html>
