@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            margin: 0 auto;
+            transform-style:preserve-3d;
+            animation: move 3s linear infinite;
+        }
+        @keyframes move{
+            0%{
+                transform: rotateX(20deg) rotateY(0deg) ;
+            }
+            100%{
+                transform: rotateX(20deg) rotateY(360deg) ;
+            }
+        } 
+        .wrapper div{
+            position: absolute;
+            top:200px;
+            left: 0;
+            width: 200px;
+            height:200px;
+            opacity: 0.5;
+            text-align: center;
+            line-height: 200px;
+            color: #ffffff;
+            font-size: 30px;
+        }
+        .wrapper .item1{
+            background: red;
+            transform: rotateY(0deg) translateZ(200px);
+        }
+        .wrapper .item2{
+            background: green;
+            transform: rotateY(60deg) translateZ(200px);
+        }   
+        .wrapper .item3{
+            background:orange;
+            transform: rotateY(120deg) translateZ(200px);
+        }
+        .wrapper .item4{
+            background:deepskyblue;
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        .wrapper .item5{
+            background:deeppink;
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        .wrapper .item6{
+            background:lawngreen;
+            transform: rotateY(300deg) translateZ(200px);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+    </div>
+</body>
+</html>
