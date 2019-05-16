@@ -12,6 +12,7 @@
             width: 200px;
             margin: 0 auto;
             transform-style:preserve-3d;
+            perspective: 600px;
             animation: move 3s linear infinite;
         }
         @keyframes move{
@@ -36,33 +37,34 @@
         }
         .wrapper .item1{
             background: red;
-            transform: rotateY(0deg) translateZ(200px);
+            transform: rotateY(0deg) translate3d(0,0,200px);
         }
         .wrapper .item2{
             background: green;
-            transform: rotateY(60deg) translateZ(200px);
+            transform: rotateY(60deg) translate3d(0,0,200px);
         }   
         .wrapper .item3{
             background:orange;
-            transform: rotateY(120deg) translateZ(200px);
+            transform: rotateY(120deg) translate3d(0,0,200px);
         }
         .wrapper .item4{
             background:deepskyblue;
-            transform: rotateY(180deg) translateZ(200px);
+            transform: rotateY(180deg) translate3d(0,0,200px);
         }
         .wrapper .item5{
             background:deeppink;
-            transform: rotateY(240deg) translateZ(200px);
+            transform: rotateY(240deg) translate3d(0,0,200px);
         }
         .wrapper .item6{
             background:lawngreen;
-            transform: rotateY(300deg) translateZ(200px);
+            transform: rotateY(300deg) translate3d(0,0,200px);
         }
+
+
     </style>
 </head>
 <body>
     <div class="wrapper">
-
         <div class="item1">1</div>
         <div class="item2">2</div>
         <div class="item3">3</div>
