@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+</head>
+<body>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">注册</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close cancelValue" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">register</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>               
+            </form>                                
+        </div>
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cancelValue" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="myButton" data-loading-text="Loading...">register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../jQuery/first/compressJquery.js"></script>
+<script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    var emailExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)$/;
+    var keyExp = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+    var obj = {
+        email : false,
+        password:false
+    }
+    $('#inputEmail3').on('blur',function(){
+        
+        obj.email = emailExp.test($(this).val());
+        if(obj.email){
+            $(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+        }else{
+            $(this).parents('.form-group').removeClass('has-success').addClass('has-error');
+        }
+    })
+    $('#inputPassword3').on('blur',function(){
+        console.log($(this).val());
+        obj.password = keyExp.test($(this).val());
+        console.log(obj.password);
+        if(obj.password){
+            $(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+        }else{
+            $(this).parents('.form-group').removeClass('has-success').addClass('has-error');
+        }
+    })
+
+    $('#myButton').on('click', function () {
+        if(obj.email){
+            var $btn = $(this).button('loading');
+            setTimeout(function(){
+                $btn.button('reset')
+
+            },2000)
+        }
+
+        // business logic...
+  })
+  $('.cancelValue').on('click',function(){
+      $('.form-group').find($('input')).val('');
+      $('.form-group').removeClass('has-success has-error');
+  })
+</script>
+</html>

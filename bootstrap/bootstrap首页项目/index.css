@@ -1,0 +1,46 @@
+.jumbotron{
+    text-align: center;
+    padding:100px 0;
+    background:linear-gradient(45deg,#020031 0,#6d346d 100%);
+    color:#fff;
+    margin-bottom: 0;
+}
+.jumbotron ul{
+    display: inline-block;
+}
+.jumbotron li a{
+    color:#9d9d9d;
+}
+.bc-social{
+    padding: 15px 0;
+    text-align: center;
+    border-bottom:1px solid #ddd;
+}
+
+@media screen and(max-width:768px){
+    .jumbotron{
+        padding: 60px 0;
+    }
+}
+.bc-social-buttons{
+    padding :0;
+    margin:0;
+}
+.bc-social-buttons li{
+    list-style: none;
+    display: inline-block;
+} 
+.bc-social-buttons .social-weibo:before{
+    content: '|';
+}
+.projectx{
+    text-align: center;
+}
+.projectx .page-header{
+    width: 60%;
+    margin: 0 auto;
+}
+.thumbnail{
+    max-width:310px;
+    margin:0 auto;
+}
