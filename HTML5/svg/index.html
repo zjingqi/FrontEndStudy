@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        svg{
+            border:1px solid black;            
+        }
+        line{
+            stroke:red;
+        }
+        rect{
+            fill:transparent;
+            fill-opacity: 0.5;
+            stroke:green;
+            stroke-width: 10px;
+        }
+        polyline{
+            fill:transparent;
+            stroke:blue;
+            stroke-linejoin: round/bevel;
+        }
+        path{
+            stroke:deepskyblue;
+            fill: transparent;
+            stroke-width:20px;
+            stroke-dasharray: 10px 20px 30px 10px;/*间距*/
+            stroke-dashoffset: 10px;/*缩进*/
+        }
+    </style>
+</head>
+<body>
+    <svg width=500 height=500>
+       1.
+        <line x1=100 y1=100 x2=200 y2=200> </line>
+        rect默认填充黑色 
+        <rect x=200 y=200 width=100 height=100 rx=10 ry=30></rect>
+        <circle r="50" cx="220" cy="250"></circle>
+        <ellipse rx="100" ry="50" cx="400" cy="150"></ellipse>
+    
+
+        2.折线
+        <polygon points="60 50,75 35,100 50,125 35,159 50,175 35,190 50"></polygon>        
+        <polyline points="60 50,75 35,100 50,125 35,159 50,175 35,190 50"></polyline>
+
+        3. M L；m l
+        <path d="M 100 100 L 200 200 200 300"></path>绝对坐标
+        <path d="M 100 100 l 200 200 200 300"></path>相对长度
+        
+        4. H/h V/v Z(闭合)，
+            A 圆弧指令
+            Q 二次贝塞尔曲线
+            C 三次贝塞尔曲线
+        <path d = "M 100 100 A 70 120 45 1/2/3/4 0/1 150 200"></path>
+        <path d = "M 100 200 Q 200 100 300 300 T 500 100"></path>
+        <path d = "M 0 200 C 100 100 200 100 300 400 S 500 500 500 0"></path>
+        
+
+        5. 线性渐变
+        <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(255,255,0)"/>
+                <stop offset="50%" style="stop-color:rgb(255,0,0)"/>
+                <stop offset="100%" style="stop-color:rgb(100,200,100)"/>
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="500" height="500"style="fill:url(#bg1)"/>
+
+        6.弧形渐变
+        <defs>
+            <radialGradient id="bg2" cx="50%" cy="50%" r="50%" fx=50% fy="50%">
+            <stop offset="0%" style="stop-color:green"/>
+            <stop offset="100%" style="stop-color:red"/>
+        </defs>
+        <rect x=0 y=0 width=500 height=500 style="fill:url(#bg2)"/>
+    
+        7.高斯模糊
+        <defs>
+            <filter id="Gaussian_Blur">
+                <feGaussianBlur in="SourceGrapic" stdDeviation="20"/>
+            </filter>
+        </defs>
+        <rect x="0" y="0" width="500" height="500" fill="yellow"style="filter:url(#Gaussian_Blur)"/>
+    
+
+
+     8. viewBox="0 0 30 4"
+
+     <path d="M 0 100 L 500 100"></path>
+
+    </svg>
+    <script>
+     
+     9.
+      path.getTotalLength();
+      path.getPointAtLength(x);//获取路径上距离起始点长度的点的坐标
+    10.  
+      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('width',500);
+        svg.setAttribute('height',500);
+        document.body.appendChild(svg);
+    
+    </script>
+</body>
+</html>

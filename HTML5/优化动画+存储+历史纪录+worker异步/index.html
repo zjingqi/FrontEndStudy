@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn{
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    requestAnimationFrame:
+    1.页面刷新前执行一次
+    2.1000ms 60次，16ms一次
+    3.用法和setTimeout类似
+    4.兼容性(ie10以上)
+    requestAnimationFrame(f);
+    cancelAnimationFrame(id);
+
+stroage:
+    localStroage.name = 'aimee';
+    cookie存储信息到用户的设备上，数据量较小（4K左右），
+        因为cookie数据要在请求http头部中来回传输，数据量大的话，影响性能 浪费宽带。
+
+    <div id="btn">
+
+    </div>
+    <script>
+
+        var obj = {
+                "name":'aimme',
+                "age":"14"
+            }
+
+        // localStorage.name = 'aimme';
+        // sessionStorage.obj = JSON.stringify(obj);窗口关闭就没有了
+        // localStorage.obj = JSON.stringify(obj);
+Stroage API:
+        setItem(name,val);设置属性
+        getItem(name);获得属性
+        removeItem(name);移除属性
+        clear();清除属性
+
+        encodeURIComponent("张");//转码
+        decodeURIComponent()//解码
+
+        // 设置
+        window.requestAnimationFrame= (function(){
+            return window.requestAnimationFrame||
+                window.webkitRequestAnimationFrame||
+                window.mazRequeatAnimationFrame||
+                function(callback){
+                    window.setTimeout(callback,1000/60);
+                };
+        })();
+        // 取消
+        window.cancelAnimationFrame = (function(){
+            return window.cancelAnimationFrame||
+                window.webkitCancelAnimationFrame||
+                window.mozCancelAnimationFrame||
+                function(id) {
+                    window.clearTimeout(id);
+                };
+        })();
+        var req;
+        function move(){
+            btn.style.left = btn.offsetLeft + 10 + 'px';
+            if(btn.offsetLeft>=300) {
+                // clearTimeout(tiemr);
+                cancelAnimationFrame(req);
+                btn.style.left='300px';
+            }
+            req = requestAnimationFrame(move);
+            // var timer = setTimeout(function(){
+            //     move();
+            // },10)
+        }
+        move();
+
+
+
+        work：
+        var worker = new Worker('./**.js');
+        worker.postMessage(10);
+        worker.onmessage = function(e){
+            console.log(e.data);;
+            worker.terminate();//主线程控制下的断开
+        }
+        /**
+         * **.js
+         * onmessage = function(e){
+         *  deal(e.data)
+         * close();//自己断开
+         * }
+         * function deal(data){
+         * 
+         *  return data*data;
+         * }
+         * /
+    </script>
+</body>
+</html>

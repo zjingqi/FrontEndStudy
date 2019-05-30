@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        svg{
+            border: 1px solid #000;
+        }
+        path{
+            fill:transparent;
+            stroke-width: 10px;
+            stroke-linecap: round;
+        }
+        #path1{
+            stroke:#ccc;
+        }
+        #path2{
+            stroke:orange;
+            stroke-dasharray:1000px;
+            stroke-dashoffset: 1000px;
+        }
+        .active{
+            transition: all 1s linear;
+
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="btn">
+
+    <svg width=500 height=500>
+        <path id="path1" d="M 200 300 A 100 100 0 1 1 300 300"></path>
+        <path id="path2" d="M 200 300 A 100 100 0 1 1 300 300"></path>   
+    </svg>
+    <script>
+
+        var len = path2.getTotalLength();
+
+        btn.onblur = function(){
+            var val =  this.value;
+            var total = (val/100)*len;
+            path2.classList.add('active');
+            path2.style.strokeDashoffset = 1000 - total + 'px';
+        }
+        btn.onfocus = function(){
+            path2.classList.remove ('active');
+            path2.style.strokeDashoffset =1000+'px';
+        }
+
+        
+    </script>
+</body>
+</html>
