@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #item1{
+            width:100px;
+            height: 100px;
+            background:red;
+        }
+        #item2{
+            width: 100px;
+            height: 100px;
+            background:green;
+        }
+        #wrapper{
+            height: 300px;
+            width: 300px;
+            border: 2px solid #000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="item1" draggable="true">被拖拽元素1</div>
+    <div id="item2" draggable="true">被拖拽元素2</div>
+    <div id="wrapper">目标元素</div>
+   
+   <script>
+        var item1 = document.getElementById('item1');
+        var item2 = document.getElementById('item2');
+        var wrapper = document.getElementById('wrapper');
+        /**
+        * 拖拽开始是触发的事件；
+        */
+        item1.addEventListener('dragstart',function(e){
+            e.dataTransfer.setData('data',this.id);  //传值      
+        })
+        item2.addEventListener('dragstart',function(e){
+            e.dataTransfer.setData('data',this.id);
+        })
+        /**
+        * 拖拽结束时触发的事件
+        */
+        item1.addEventListener('dragend',function(){
+        })       
+        /**
+        * 被拖拽元素在目标元素上时触发
+        */
+        wrapper.addEventListener('dragover',function(e){
+            e.preventDefault();
+        })
+        /**
+        * 鼠标在目标元素上松开时触发
+            触发条件：必须在阻止dragover的默认事件
+        */
+        wrapper.addEventListener('drop',function(e){
+            var data = e.dataTransfer.getData('data');  //取值      
+            wrapper.appendChild(document.getElementById(data));
+            
+        })
+
+
+    </script>
+</body>
+</html>

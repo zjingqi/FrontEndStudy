@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <audio src="./datas/金玟岐 - 岁月神偷.mp3" controls></audio> -->
+    <!-- <audio src="./datas/陈奕迅 - 稳稳的幸福.mp3" autoplay controls preload="auto"loop></audio>
+    <audio src="./datas/黄榕生 - 推开世界的门.mp3" controls></audio>     -->
+   
+    <!-- <video src="" poster=""></video>      -->
+   
+   <!-- <audio id="mousic">
+       <source src="./datas/黄榕生 - 推开世界的门.mp3" type="audio/mpeg">
+       <source src="./datas/黄榕生 - 推开世界的门.ogg" type="audio/ogg">
+   </audio>  -->
+   <button id="play">播放</button>
+   <button id="pause">暂停</button>
+   <button id="load">重播</button>
+   <button id="up">+</button>
+   <button id="down">-</button>
+   <button id="quc">快进</button>
+
+   <button id="or">play/pause</button>
+   <script>
+       var audio1 = document.createElement('audio');
+       audio1.src='./datas/陈奕迅 - 稳稳的幸福.mp3';
+       document.body.appendChild(audio1);
+         
+       var audio2 = new Audio('./datas/金玟岐 - 岁月神偷.mp3');
+       document.body.appendChild(audio2);
+       audio2.controls = true;//播放控件
+       audio2.preload = 'auto';//自动加载部分
+       audio2.loop = 'loop';//自动循环
+       audio2.autoplay= true;//自动播放
+       audio2.volume=0.5;//音量
+       audio2.muted=false;//静音
+       audio2.playbackRate = 1.6//加速0.6         
+       console.log(audio2.played);//内容播放了几段
+    //    audio2.played.start(0)//第n+1段开始时间
+    //    audio2.played.end(0)//第n+1段结束时间
+       window.onload = function() {//加载完之后再
+        console.log(audio2.currentSrc);//找资源位置
+        console.log(audio2.duration);//当前音频的时长
+        var percent_loaded = Math.floor(audio2.buffered.end(0)/audio2.duration*100);//当前缓存内容的百分比
+        console.log(percent_loaded);
+       }
+       play.onclick = function(){
+           audio2.play();
+       }
+       pause.onclick = function(){
+           audio2.pause();
+       }
+       load.onclick = function(){
+           audio2.load();//重播
+       }
+       down.onclick=function(){  
+        //    audio2.volume=Math.floor(audio2.volume*10)/10; 
+           if(audio2.volume >= 0.1)audio2.volume -=0.1;
+       }
+       up.onclick = function(){
+           if(audio2.volume <= 0.9) audio2.volume += 0.1;
+       }
+       quc.onclick = function(){
+           audio2.currentTime += 10;
+       }
+
+       or.onclick = function(){//单键控制播放与暂停
+           if(audio2.paused){
+               audio2.play();
+           }
+           else{
+               audio2.pause();
+           }
+       }
+
+       audio2.onseeking = function () {//到新的播放点时播放
+           console.log(555);        
+       }
+       /**
+        * 浏览器获取完媒体的元数据触发
+        */
+       audio2.onloadedmetadata = function(){
+           console.log('metadata');
+       }
+       /**
+        * 浏览器已经加载完当前帧数据，准备播放时触发，IE8
+        */
+       audio2.onloadeddata =function(){
+           console.log('eddata');
+       } 
+       /**
+        * 当前播放结束后触发
+        */
+       audio2.ended = function(){
+           cnosole.log('end');
+       }
+   </script>
+</body>
+</html>

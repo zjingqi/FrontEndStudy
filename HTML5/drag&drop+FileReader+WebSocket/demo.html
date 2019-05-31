@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            margin-left: 100px;
+        }
+        li{
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+            background:paleturquoise;
+            text-align: center;
+            color:hotpink;
+            font-size: 20px;
+        }
+        #wrapper{
+            margin: 50px 100px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li draggable="true">1</li>
+        <li draggable="true">2</li>
+        <li draggable="true">3</li>
+        <li draggable="true">4</li>
+        <li draggable="true">5</li>
+    </ul>
+    <div id="wrapper"></div>
+    <script>
+        var li = document.getElementsByTagName('li'),
+            ul = document.getElementsByTagName('ul')[0],
+            wrapper = document.getElementById('wrapper'),
+            len = li.length;
+        function bindLiEvent(){
+            for(var i = 0;i < len;i++){
+                li[i].addEventListener('dragstart',function(e){
+                    var index = getIndex(this);
+                    e.dataTransfer.setData('data',index);
+                });
+                li[i].addEventListener('dragover',function(e){
+                    e.preventDefault();
+                })
+                li[i].addEventListener('drop',function (e) {
+                    var j = e.dataTransfer.getData('data');
+                    console.log(j);
+                    ul.insertBefore(li[j],this);
+                })            
+            }
+        }
+        function getIndex(dom){
+            for(var i=0;i<len;i++){
+                if(li[i] == dom){
+                    return i;
+                }
+            }
+        }
+        bindLiEvent();
+        function removeLi(){
+            wrapper.addEventListener('dragover',function(e){
+                e.preventDefault();
+            });
+            wrapper.addEventListener('drop',function(e){
+                var index = e.dataTransfer.getData('data');
+                li[index].remove();
+            })
+        }
+        removeLi();
+    </script>
+</body>
+</html>
