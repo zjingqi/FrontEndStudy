@@ -74,8 +74,15 @@
                 e.preventDefault();
             });
             wrapper.addEventListener('drop',function(e){
-                var index = e.dataTransfer.getData('data');
-                li[index].remove();
+               e.preventDefault();//默认打开事件取消
+                // var index = e.dataTransfer.getData('data');
+                // li[index].remove();
+                var dt = e.dataTransfer;
+                console.log(dt);
+                
+                var files = dt.files;
+                console.log(files);
+
             })
         }
         removeLi();
