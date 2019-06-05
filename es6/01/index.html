@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            height: 20px;
+            width: 200px;
+            margin-top: 10px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    let const 识别块级作用域;
+    let特点：
+        1.不能变量声明提升
+        2.统治所在作用域
+        3.里部能用外部的变量，外部不能用里部的
+        4.不能重复声明
+    cosnt（常量） 特点：
+        1.有let的所有特点
+        2.申请const变量时必须赋值
+        3.不能重复赋值（常量不可改变的是它的地址）
+解构赋值：
+    当右边不是数组时会报错：
+        let [foo] = 1;
+        let [foo] = false;
+        let [foo] = NaN;
+        let [foo] = undefined;
+        let [foo] = null;
+        let [foo] = {}//对象中没有Symbol.iterator方法
+    <script>
+        var div = document.getElementsByTagName('div');
+        const aa = {name:['zj','qq','hah']}
+        aa.name[1]='cc';
+
+        var [a,[b,c],d] = [1,[2,3],4];
+        console.log(a,b,c,d);
+    
+    /**默认求职
+    * 当右侧严格等于undefined时就会赋默认值
+    */
+        var [foo = true] = [];
+        console.log(foo);
+        /**
+         * 惰性求值
+         */
+        function val(){return 32;}
+        var [a = val(), b = 2,c = 3] = [];
+
+        var [a = b, b = 1] = [];//undefined,1
+        let [a = b, b = 1] = [];//error
+
+        /**
+         * 对象解构赋值
+         */
+        var {a} = {a: 1};
+        var a;
+        ({a} = {a: 1})
+
+        var {name:x, age:[a,b,c]} = {name:'zzz',age:[1,2,34]};//解构赋值
+
+        var {a = 1,b = 2,c = 3} = {};//默认赋值
+
+        // var [a,b,c,d,e] = 'hello';
+        var [t,y,u,i] = ['l','o','v','e'];
+        var {a,b,c,d,e} = 'hello';
+        // console.log(new String('hello').toString) ;
+        console.log(a,b,c,d,e);
+
+        function add({x = 1,y = 2}){
+            console.log(x,y);
+        }
+        add(1,2);
+
+        var arrLike = {0:1, 1:2, 2:3,length:3};
+        var arr = Array.from(arrLike);//把类数组变成数组
+            console.log(arr);
+
+        类数组原生JS得到类数组：
+         div = document.getElementsByTagName('div');
+         arguments是类数组
+
+        
+        var arr1= new Array(10);//会创建长度为10的数组，无法创建一个长度为1的数组
+        var arr = Array.of(10)//弥补以上缺点
+
+        实例方法
+        var arr = [1,2,3,4,5,6,7,8];
+        arr.copyWithin(0,3,6);//从第0位开始替换数据，从第3位读取数据，到6位置前停止数据
+        console.log(arr);
+        
+        var arr = [1,5,10,15];
+        var num = arr.find(function(value,index,arr){
+            return value > 9;//找到第一个符合的值
+        })
+        var num = arr.findIndex(function(value,index,arr){
+            return value > 9;//找到第一个符合的索引
+        })
+    </script>
+</body>
+</html>
