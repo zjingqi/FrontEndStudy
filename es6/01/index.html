@@ -25,6 +25,7 @@
     <div></div>
     <div></div>
     <div></div>
+    1.
     let const 识别块级作用域;
     let特点：
         1.不能变量声明提升
@@ -35,7 +36,7 @@
         1.有let的所有特点
         2.申请const变量时必须赋值
         3.不能重复赋值（常量不可改变的是它的地址）
-解构赋值：
+2.解构赋值：
     当右边不是数组时会报错：
         let [foo] = 1;
         let [foo] = false;
@@ -44,73 +45,400 @@
         let [foo] = null;
         let [foo] = {}//对象中没有Symbol.iterator方法
     <script>
-        var div = document.getElementsByTagName('div');
-        const aa = {name:['zj','qq','hah']}
-        aa.name[1]='cc';
+        
+        1.
+        // var div = document.getElementsByTagName('div');
+        // const aa = {//地址空间不可改变
+        //     name:['zj','qq','hah']
+        // }
+        // aa.name[1]='cc';//可改变
 
-        var [a,[b,c],d] = [1,[2,3],4];
-        console.log(a,b,c,d);
+        // var [a,[b,c],d] = [1,[2,3],4];
+        // console.log(a,b,c,d);
     
-    /**默认求职
-    * 当右侧严格等于undefined时就会赋默认值
-    */
-        var [foo = true] = [];
-        console.log(foo);
-        /**
+    2./**默认求值
+        * 当右侧严格等于undefined时就会赋默认值
+        */
+        // var [foo = true] = [];
+        // console.log(foo);
+    3. /**
          * 惰性求值
-         */
-        function val(){return 32;}
-        var [a = val(), b = 2,c = 3] = [];
+       */
+        // function val(){return 32;}
+        // var [a = val(), b = 2,c = 3] = [];
 
-        var [a = b, b = 1] = [];//undefined,1
-        let [a = b, b = 1] = [];//error
+        // var [a = b, b = 1] = [];//undefined,1
+        // let [a = b, b = 1] = [];//error
 
-        /**
-         * 对象解构赋值
-         */
-        var {a} = {a: 1};
-        var a;
-        ({a} = {a: 1})
+     4. /**
+        *对象解构赋值
+        */
+        // var {a} = {a: 1};
+        // var a;
+        // ({a} = {a: 1})//要加()把他变成表达式
 
-        var {name:x, age:[a,b,c]} = {name:'zzz',age:[1,2,34]};//解构赋值
+        // var {name:x, age:[a,b,c]} = {name:'zzz',age:[1,2,34]};//解构赋值
 
-        var {a = 1,b = 2,c = 3} = {};//默认赋值
+        // var {a = 1,b = 2,c = 3} = {};//默认赋值
 
         // var [a,b,c,d,e] = 'hello';
-        var [t,y,u,i] = ['l','o','v','e'];
-        var {a,b,c,d,e} = 'hello';
+        // var [t,y,u,i] = ['l','o','v','e'];
+        // var {a,b,c,d,e} = 'hello';
         // console.log(new String('hello').toString) ;
-        console.log(a,b,c,d,e);
+        // console.log(a,b,c,d,e);
 
-        function add({x = 1,y = 2}){
-            console.log(x,y);
+        // function add({x = 1,y = 2}){
+        //     console.log(x,y);
+        // }
+        // add(1,2);
+
+        // var arrLike = {0:1, 1:2, 2:3,length:3};
+        // var arr = Array.from(arrLike);//把类数组变成数组
+        //     console.log(arr);
+
+      5.  // 类数组原生JS得到类数组：
+        //  div = document.getElementsByTagName('div');
+        //  arguments是类数组
+
+        
+        // var arr1= new Array(10);//会创建长度为10的数组，无法创建一个长度为1的数组
+        // var arr = Array.of(10)//弥补以上缺点
+
+     6.   // 实例方法
+        // var arr = [1,2,3,4,5,6,7,8];
+        // arr.copyWithin(0,3,6);//从第0位开始替换数据，从第3位读取数据，到6位置前停止数据
+        // console.log(arr);
+        
+        // var arr = [1,5,10,15];
+        // var num = arr.find(function(value,index,arr){
+        //     return value > 9;//找到第一个符合的值
+        // })
+        // var num = arr.findIndex(function(value,index,arr){
+        //     return value > 9;//找到第一个符合的索引
+        // })
+        
+        // var arr = new Array(10);
+        // // arr.fill(4,1,4);
+        // for(let index of ['a','b'].keys()){
+        //     console.log(index);            
+        // }
+        // for(let value of ['a','b'].values()){
+        //     console.log(value);            
+        // }
+
+        // for(let [index,value] of ['a','b'].entries()){
+        //     console.log(index,value);            
+        // }
+
+        // var it = ['c','d'].entries();
+        // console.log(it.next());
+
+        // var arr = ['a','b','c',3,4,NaN];
+        // console.log(arr.indexOf('a'));//判断是否包含某值
+        // console.log(arr.includes('a'));//es6
+        // console.log(arr.indexOf(NaN))//false
+        // console.log(arr.includes(NaN));//true
+
+       7 //对象扩展
+        // var name = 'zjq'
+        // var obj = {
+        //     name,
+        //     age:'18',
+        //     a: function(){
+        //         console.log('aaa');
+        //     },
+        //     b(){
+        //         console.log('bbb');
+        //     }
+        // }
+        // console.log(obj);
+
+        // var prop = 'name';
+        // var obj = {};
+        // obj.a = 1;
+        // obj[prop] = 'aas';
+
+        // var obj1 ={//es6在对象里字符串拼接
+        //     [prop+'a'] : 1
+        // }
+
+
+        // function render(){
+        // }
+        // var root={};
+        // root.process = {
+        //     render,            
+        //     // stop:stop(){} 
+        // }
+
+        // Object.is(1,2);
+        // Object.is(NaN,NaN);//true;
+        // Object.is(+0,-0);//false;
+
+        // var target = {
+        //     a : 1
+        // }
+        // var sources1 = {
+        //     b : 2
+        // }
+        // var sources2 = {
+        //     c : 3
+        // }
+        // Object.assign(target,sources1,sources2);//浅拷贝
+        // console.log(target);
+        // $.extend({//在jQuery中扩展方法
+        //     a : function(){
+
+        //     }
+        // });
+        // $.extend(true,target,sources);//深拷贝把Sources拷到target上
+
+        // var obj = {
+        //     foo:'1',
+        //     bar:'2'
+        // }
+        // console.log(Object.keys(obj));
+        // console.log(Object.entries(obj));
+
+        // var obj1 = {
+        //     a:1
+        // }
+        // var obj2 = {
+        //     b:2
+        // }
+        // obj1.__proto__ = obj2;//es5
+        // Object.setPrototypeOf(obj1,obj2);//es6
+        // console.log(obj1.b);
+        // console.log(obj1.__proto__);//es5
+        // console.log(Object.getPrototypeOf(obj1));//es6
+
+
+        // var arr1 = [1,2,3];
+        // var arr2 = [3,4,5];
+        // // var arr = arr1.concat(arr2);//es5
+     8   // //拓展运算符
+        // var arr = [...arr1,...arr2];//es6
+        // console.log(arr);
+        // //rest操作符
+        // var  [a,...b] = [1,2,3];
+        // console.log(a);
+        // console.log(b);
+
+
+        // var obj1 = {
+        //     a : 1,
+        //     a2 : 12
+        // }
+        // var obj2 = {
+        //     b : 2
+        // }
+        // var obj3 = {
+        //     ...obj1,
+        //     ...obj2
+        // }
+
+        // var {foo,...bar} ={
+        //     foo : 1,
+        //     bar : 2,
+        //     baz : 3
+        // }
+
+9 ./**
+    * 函数的拓展
+    */
+        // function add(...arr){
+        //     console.log(arr);
+        //     // return a + b;
+        // }
+        // add(1,2,3,4,5,6);
+
+        // function a(foo = 10 ,baz = 20){
+        //     console.log(foo,baz);
+        // }
+        // a();
+    10/**
+     *箭头函数      
+        */
+    //    1.函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象
+    //    2.不可以当作构造函数，即不可以使用new命令
+    //    3.不可以使用arguments对象，该对象在函数体内不存在，可以用Rest参数代替
+        // var add1 = a => console.log(a);
+        // var add2 = a => a;//return a
+        // var add3 = (a, b) => a+b;
+        // var add4 = (a, b) => ({//先声明变量，{}里会被解析成一个代码块,加()变成表达式
+        //     a : a,
+        //     b : b
+        // })
+
+        // var insert = (value) => ({
+        //     into : (array) => ({
+        //         after : (afterValue) => {
+        //             array.splice(array.indexOf(afterValue) + 1, 0, value);
+        //             return array;
+        //         }
+        //     })
+        // })
+
+
+        // var id = 10;
+        // var obj = {
+        //     id :20
+        // }
+        // function a(){
+        //     setTimeout(function(){
+        //         console.log(this.id);
+        //     },100)
+        // }
+        // console.log(a.call(obj))//10;setTimeout是window的方法
+
+        //es5 this指向定义它的地方
+        //es6 this指向使用它的地方
+        // function foo(){
+        //     setTimeout(()=>{
+        //         console.log(this.id);
+        //     },100)
+        // }
+        // foo.call(obj);
+
+    //     var id = 10;
+    //     function a (){
+    //         console.log(this.id);
+    //     }
+    //     a();//10
+    //     var obj = {
+    //         id : 20,
+    //         a : a
+    //     }
+    //     obj.a();//20
+    //     var go = obj.a;
+    //     go();//10
+    //     var obj1 = {
+    //         id : 30
+    //     }
+    //     a.call(obj1);
+    //    var obj2 = {
+    //         id :40
+    //     }
+    //     var b = a.bind(obj2);//硬绑定，无法在改变this指向
+    //     b.call(obj1);
+    //     b();
+    //     //bind内部实现
+    //     function bindThis(){
+    //         a.call(obj2);
+    //     }
+    //     bindThis.call(obj);//40,语句始终会执行a.call(obj2),会a方法的this指向obj2
+    //     bindThis();
+
+    11//声明变量的方式：var let const function class import
+        // function human(){
+        //     this.name = 'aaa';
+        //     this.sex = 'female'
+        // }
+        // human.pritotype = {
+        //     eat:function(){
+        //         console.log('eat');
+        //     },
+        //     walk : function(){
+        //         console.log('walk');
+        //     }
+        // }
+        // var human1 = new human();
+
+        // class human{ //方法不可遍历
+        //     constructor(name ,sex){
+        //         this.name = name;
+        //         this.sex = sex;
+        //     }
+        //     eat(){
+        //         console.log('eat');
+        //     }
+        //     walk(){
+        //         console.log('walk');
+        //     }
+        // }
+        // var human2 = new human('zzz','male');
+        // human2.eat();
+        // var human3 = new human('ccc','male');
+        // human3.__proto__.love = function(){
+        //     console.log('meme');
+        // }
+        // human2.love();//原型链共享
+
+    12    /**
+         * 继承
+         */
+        // class Father{
+        //     constructor(){
+        //         this.house = 4;
+        //     }
+        //     static show(){//静态方法定义在函数Father上，通过类名调用
+        //         console.log('show');
+        //     }
+        //     eat(){//定义在原型上
+        //         console.log('eat');
+        //     }
+        // }
+        // class Child extends Father{//继承没有隐式this，要继承父亲的this
+        //     constructor(){
+        //         super();//孩子没有this,先让父亲的thi执行,再给孩子附上他独有的属性
+        //         this.age = 10;
+        //     }
+        //     static childShow(){//静态方法只能继承静态方法
+        //         super.show();
+        //     }
+        //     childEat(){
+        //         super.eat();
+        //     }
+        // }
+        // Father.show();
+        // Child.show();
+        // var child1 = new Child();
+        // child1.childEat();
+        // child.childShow();
+
+        // var obj ={
+        //     a : 1,
+        //     get a(){
+        //         console.log(1);
+        //         return 100;
+        //     },
+        //     set a(val){
+        //         console.log(val);
+        //     }
+        // }
+        // obj.a = 200;
+        // console.log(obj.a);
+       
+        // class a{
+        //     constructor(){
+        //         this.age = 10;
+        //     }
+        //     get age(){
+        //         return 100;
+        //     }
+        //     set age(val){
+        //         console.log(val);
+        //     }
+        // }
+        // var a1 = new a(); 
+        // console.log(a1.age);
+        var obj = {b:'333'};
+        obj.ff = '22';
+        obj.a = 100;
+        
+        Object.defineProperty(obj, 'a',{
+            value : 123,
+            writable:false,//可重写性
+            enumerable : false,//可遍历性
+            configurable:false,//可重新配置性           
+            get a(){},
+            set a(val){return val},
+        })
+        obj.a = 100000;
+        console.log(obj.a);//100
+        for(var prop in obj){
+            console.log(prop);
         }
-        add(1,2);
-
-        var arrLike = {0:1, 1:2, 2:3,length:3};
-        var arr = Array.from(arrLike);//把类数组变成数组
-            console.log(arr);
-
-        类数组原生JS得到类数组：
-         div = document.getElementsByTagName('div');
-         arguments是类数组
-
-        
-        var arr1= new Array(10);//会创建长度为10的数组，无法创建一个长度为1的数组
-        var arr = Array.of(10)//弥补以上缺点
-
-        实例方法
-        var arr = [1,2,3,4,5,6,7,8];
-        arr.copyWithin(0,3,6);//从第0位开始替换数据，从第3位读取数据，到6位置前停止数据
-        console.log(arr);
-        
-        var arr = [1,5,10,15];
-        var num = arr.find(function(value,index,arr){
-            return value > 9;//找到第一个符合的值
-        })
-        var num = arr.findIndex(function(value,index,arr){
-            return value > 9;//找到第一个符合的索引
-        })
     </script>
 </body>
 </html>
