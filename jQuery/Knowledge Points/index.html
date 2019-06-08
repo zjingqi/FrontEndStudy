@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height:100px;
+            background: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <form action="">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>login</button>
+    </form>
+    <!-- <div class="content"></div> -->
+    <script src="../first/compressJquery.js"></script>
+    <script>        
+        // var obj={
+        //     name : 'aaa',
+        //     age:18
+        // }
+
+        // $('li').addClass(function(index){
+        //    return index % 3 === 0 ?  'li-3': 'no-li-3';
+        // });
+        // $('li').removeClass(function(index){
+        //     return 'no-li-3';
+        // })
+        // $('li').appendTo($('div'));
+
+        // $('ul').on('mousedown','li', obj, function(e){//传参
+        //     console.log(e.data);//obj会传进事件对象中
+        // })
+
+        // function aa(){console.log(1);}
+        // function bb(){console.log(2);}
+        // $('ul').on('mousedown','li:odd', aa).on('mouseup',bb)//绑定 
+        // $('ul').off('mousedown','li:odd', aa);//解除
+        
+        // $('.box1').remove();//把这个dom结构删除，事件也都删除了
+        // $('.box1').detach();//事件还在
+
+        // $('#dd').innerWidth();
+        // $('#dd').outerWidth();
+        // $('#dd').outerWidth(true);
+
+
+        //  $('button').on('click',function(){
+        //      var obj = {};
+        //      $('input').each(function(index,ele){
+        //          obj[$(ele).prop('name')] = $(ele).val();
+        //      })
+        //      console.log(obj);
+        //      console.log($('form').serializeArray())
+        //       return false;//取消默认事件
+        //  })   
+       
+        // $('div').offset()//相对于浏览器
+        // $('div').position()//相对于有定位的父级
+        
+        $('em').parent();//返回最近的父级
+        $('em').offsetParent()//返回最近的有定位的父级
+        $('em').parents()//返回所有父级
+        $('em').parents('.box')//找类名为box的父级
+        
+        $('em').length()//em个数
+        
+        $('em').wrap($('.demo'))//给每个em外面都包裹一层class=demo的dom
+        $('em').wrap(function(index){
+            switch(idnex){
+                case 0:
+                    return '<div/>';
+                case 1:
+                    return '<ul/>';
+            }
+        })
+        
+        $('em').wrapAll($('<div/>'))//给所有的em外面包一个新建的div（会改变dom结构）
+        
+        $('em').wrapInner($('<div/>'));//在em里面加一层新建div
+      
+        $('em').unwrap($('div'));//删除em最近的div父级
+
+        $('ul').find('li').eq(2).css('background','red')
+        .end(2).css('background','green');//回退的上一级,2再退一级
+
+        $('em').closest($('div'))//返回最近的一个div
+
+        $('li').eq(3).siblings();//返回所有的兄弟结点
+        $('li').prevAll()//当前元素上面的兄弟节点
+        $('li').nextAll()//下面的兄弟结点
+
+        $('li').eq(3).prevUntil($('li').eq(0)).css('background','red');//从第三个开始向上到第0个 掐头去尾选择,
+        $('li').eq(3).nextUntil($('li').eq(5)).css('background','red');//从第三个开始向下到第五个 掐头去尾选择
+    
+        //克隆
+        $('.demo').on('click',function(){
+            console.log(11111111);
+        })
+        var oDemo = $('.demo').clone(true);//true深度克隆，把事件也克隆了
+        $('body').append(oDemo);
+        
+        $('li').add('.demo').css({
+            width:100,
+            height:100,
+            background:red
+        })
+
+        $('p').slice(0,2)//截取 算头不算尾
+
+        $('.demo').animate({width:100,height:300,left:100,top:400},3000, 'linear' )
+        .delay(2000)//延迟两秒
+        .animate({width:30,height:100,left:300,top:30},2000,linear)
+        //渐变
+
+        $('document').on('click',function(){
+            $('div').stop()//阻止当前运动，继续后续运动            
+        })
+        $('div').stop()//阻止当前运动，继续后续运动 
+        $('div').stop(true)//在当前位置停止
+        $('div').stop(true,true)//继续当前运动，阻止后续运动
+
+        $('div').finish();//停止当前所有运动，达到最后运动的目标点
+        
+    </script>
+</body>
+</html>

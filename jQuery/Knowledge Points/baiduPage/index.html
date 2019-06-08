@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        html,body{
+            width:100%;
+            height: 100%;
+        }
+        nav{
+            font:12px arial;
+            width: 100%;
+            min-width: 700px;
+            height:30px;
+            position: relative;
+            text-align: center;
+            line-height: 30px;
+        }
+        ul{
+            position: absolute; 
+            /* border: 1px solid #000; */
+            height: 30px;          
+        }
+        .weather{
+            float: left;
+            width: 40%;
+            left:0;
+            top:0;
+        }
+        .navRight{
+             float: right;
+             width: 500px;
+             right: 0px;
+            top:0px;
+        }
+        .navRight li{
+            font-size: 13px;
+            color: #333;
+            font-weight:bold;
+            text-decoration:underline;
+            float: right;
+            margin-left: 10px;
+        }
+        .weather li{
+            float: left;
+            margin-right: 10px;
+        }
+        .content{
+            width: 100%;
+            height:300px;
+            position: relative;
+            /* border: 1px solid blue; */
+        }
+        .logoImg{
+            position: absolute;
+            width: 300px;
+            height:150px;
+            /* border: 1px solid #000; */
+            left: 50%;
+            top:100px;
+            margin-left: -150px;
+            background-image: url("../Popup/images/log.gif");
+            background-size: 100%;
+        }
+        .search{
+            width: 700px;
+            height:40px;
+            position: absolute;
+            left: 50%;
+            margin-left:-350px;
+       
+        }
+
+        input{
+            box-sizing: border-box;
+            width: 500px;
+            height: 40px;
+            vertical-align: top;
+        }
+        button{        
+            width: 100px;
+            height: 40px;
+            border: 1px solid blue;
+            font-size: 16px;
+            color:#fff;
+            background:blue;   
+        }
+        /* span{ */
+            /* float: left;
+            height: 40px;
+        }
+        .span1{
+            box-sizing: border-box;
+            width: 500px;
+            border: 1px solid #ccc;
+        }
+        input{
+            position: absolute;
+            border: 0 none;
+            width: 400px;
+            height: 30px;
+            padding: 0px;
+            outline: none;
+            font-size: 16px;
+        }
+        button{
+            height: 40px;
+            width: 100px;
+             border: 1px solid blue;
+            font-size: 15px;
+            background:blue;
+            color:#fff;
+        } */
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="weather">
+            <li>南阳</li>
+            <li>30</li>
+            <li>良</li>
+            <li>换肤</li>
+            <li>消息</li>
+        </ul>
+        <ul class="navRight">
+            <li>新闻</li>
+            <li>hao123</li>
+            <li>地图</li>
+            <li>视频</li>
+            <li>贴吧</li>
+            <li>学术</li>
+            <li>登录</li>
+            <li>设置</li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div class="logoImg"></div>   
+  
+    </div>
+    <!-- <div class="search">
+        <span class="span1">
+            <input type="text">
+        </span>
+        <span class="span2">
+            <button>百度一下</button>
+        </span>
+    </div> -->
+  
+    <div class="content">
+        <input type="text"><button>百度一下</button>
+    </div>
+</body>
+</html>
