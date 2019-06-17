@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+1.  箭头函数规则：
+        删掉function关键字，加上一个胖箭头
+        没有参数加括号 一个参数可选择，多个参数逗号分隔
+2.隐式返回
+        省略return 
+3.事件匿名函数
+二，
+箭头函数
+三，
+模板字符串，`${变量}`；
+四，
+标签模板
+
+<div class="zoom"></div>
+<script src="../../jQuery/tools/compressJquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<script>
+    // const arr = [2,3,4,5,6];
+    //1
+    // const double = arr.map(function(item){
+    //     return item*2;
+    // })
+    // const double2 = arr.map(item=>{
+    //     return item*2;
+    // })
+    // const double3 = arr.map((item,i)=>{
+    //     return `${i}:${item*2}`;
+    // })
+//2.
+//    const dd = name => alert(`hello ${name}`);
+//    dd('zjingqi')
+
+    // 3.箭头函数没有自己的this值，他的this值是继承他的父作用域的（ this值是绑定它定义时他父级的this值，）
+    // 他是在定义时候被指定的，也不会随着调用他的方法而改变，
+   
+    // const Jelly = {
+    //     name:"jelly",
+    //     hobbies:['Coding','sleeping','reading'],
+    //     printHobbies: function(){
+    //         this.hobbies.map(function(hobby){//map里面的是独立而定函数，没变量掉一瓶给你它，this指向Window
+    //             console.log(`${this.name} loves ${hobby}`);
+    //         })
+    //     }
+    // }
+    // Jelly.printHobbies();
+
+ // 4.参数默认值
+        // function mul(a = 3 ,b = 5){//typeof === undefined =>true会使用默认值
+        //     return a+b;
+        // }
+        // mul();//15
+        // mul(5)//25
+        // mul(undefined,3)//9
+
+ //构造函数构造一个对象时
+    // 1.建立一个新对象
+    // 2.this指向新对象
+    // 3.把obj绑定在原型对象
+    // 4.返回this
+
+    // 箭头函数不适合使用的情况
+    //1.作为构造函数，一个方法需要绑定到对象
+    // const Person = (name,points) =>{
+    //     this.name = name;
+    //     this.points = points;
+    // }
+    // const Jelly = new Person('jelly',5);
+    // Person.prototype.updatePoints = () => {
+    //     this.points++;
+    //     console.log(this.points);
+    // }
+
+    //2.需要使用this时
+    //3.需要使用arguments对象时
+    // const sum = (...args) => {
+    //     // return Array.from(arguments)//把类数组转化为数组     
+    //     return args.reduce((prevSum,value) => prevSum + value,0)
+    // }
+
+    //标签模板
+    // function highLight(strings,...values){//使用剩余参数
+    //     const highLighted = values.map(value => `<span class="highlight">
+    //     ${value}</span>`);
+
+    //     return strings.reduce((prev,curr,i) =>`${prev}${curr}${highLighted[i]||''}`,'');
+    //     // let str = '';
+    //     // strings.forEach((string, i) => str +=`${string}${highLighted[i]||''}`);
+    //     // return str;
+    // }
+    // const user = 'mary';
+    // const topic = 'learn to'
+    // const sentence = highLight`${user} has commented on your topic ${topic}`
+    // document.body.innerHTML = sentence;
+
+    //字符串函数
+    // id.startsWith('51');//大小写敏感
+    // id.startsWith('1980',6);//第六位之后的字符串是否以1980开头
+    // fan.endsWith('X');
+    // fan.endsWith('love',6);//
+    // fan.indexOf('love');
+    // fan.includes('love');
+    // fan.includes('love',10);第10位后面开始的字符串里面有无love
+    // '哈'.repeat(10)//重复10次
+
+    //对象解构赋值
+    // let name;
+    // ({name,age} = Tom);//提前声明时必须加小括号，不然花括号内会被解析成代码块
+    // let {name,age} = Tom;
+
+        // const{father:f,mother,brother,sister='have no sister'} =Tom.family;
+        //把Tom.family中的father属性值赋给f，
+    //数组解构赋值
+    // const arr = [1,2,3,4,5];
+    // const [a,,b] = arr;
+    // const [c,...d] = arr;
+    // const str = ['red','blue',undefined];
+    // const [color1,color2,color3 = 'Yellow'] = str;
+    // [a,b] = [b,a];
+
+    //for of循环
+    // for循环：繁琐
+    // forEach：不能中间终止循环break/continue不能用;
+    // for in 会遍历出来包括原型上的非数字属性；
+// es6的   for of循环弥补以上缺点;
+// const fs = ['a','b','c'];
+//         for(let f of fs.entries()){//可以获取索引和当前值
+//             console.log(f[1]);
+//         }
+
+
+// 操作类名的方式classList：
+// add(value)：将给定的字符串值添加到列表中。如果值已经存在，就不添加了。
+// contains(value)：表示列表中是否存在给定的值，如果存在则返回 true，否则返回 false。
+// remove(value)：从列表中删除给定的字符串。
+// toggle(value)：如果列表中已经存在给定的值，删除它；如果列表中没有给定的值，添加它
+
+// Array.from(todos)//把类数组对象 可遍历对象转化为真正数组
+// const names = Array.from(todos,todo => todo.textContent)
+// cosnole.log(names);
+
+// function sum(){
+//     return Array.from(arguments).reduce((prev,curr) =>prev +curr,0);
+// }
+// sum(1,2,3,4);
+
+// let arr = 'abcdefd';
+// console.log(Array.from(arr));
+
+// new Array(10)//大小为10的空数组
+// Array.of(10);//返回由参数组成的数组
+
+
+//数组的一些方法
+// const arr = [
+//     {name: 'aa', age: 12},
+//     {name: 'bb', age: 15},
+//     {name: 'cc', age: 18}
+// ];
+// .find()，.findIndex()//执行到第一个满足条件的就停止
+// arr.find(element,index,arr)
+// const bbb = arr.find(ele=>{
+//     if(ele.name === 'bb'){
+//         return true;
+//     }
+//     return false;
+// })
+
+// .some()//某一个元素满足测试函数时就返回true
+// const iss = arr.some(ele => ele.age > 0)
+// const isd = arr.every(ele => ele.age > 0)//true
+// console.log(iss);
+// console.log(isd);
+
+
+//剩余参数 
+//把很多参数整合成一个数组
+// function sum(...numbers){
+//     console.log(numbers);//数组
+// }
+// sum[1,2,3,4,5,6];
+// function cover(rate,...amounts){
+//     return amounts.map(amount => amount*rate);
+// }
+// let res = cover(0.89, 12, 33, 44, 50);
+// const player = ['Jerry',123, 5.2, 4, 2.3, 4.5, 5,9];
+// const [name,id,...scores] =player;
+
+
+//扩展运算符
+//把一个可遍历对象的每个元素扩展为一个新的序列
+// const youngers = ['aa','bb','cc'];
+// const olders = ['james','add','Matin'];
+// const members = youngers.concat(olders);
+// const res = [...youngers,'Martin',...olders];
+// const curArr = [].concat(res);//此时改变curArr不会影响res;
+// const curArr1 = [...res];//改变curArr也不会影响res
+// let arr = 'adfdf';
+// console.log(...arr);//['a','d','f','d','f'];
+
+// const arr = [
+//     {id: 1, name: 'aa', age: 12},
+//     {id: 2, name: 'bb', age: 15},
+//     {id: 3, name: 'cc', age: 18}
+// ];
+// const id = 2;
+// const todoIndex = arr.findIndex(item =>item.id === id);
+// const newArr = [...arr.slice(0,todoIndex),...arr.slice(todoIndex +1)];//
+// console.log(newArr);
+
+// const youngers = ['aa','bb','cc'];
+// const olders = ['james','add','Matin'];
+// youngers.push(...olders);
+// console.log(youngers);
+
+
+//promise
+// let user;
+// $.get('https://api.github.com/users',data=>{
+//     console.log('fetched all users');
+//     user = data[0].login;
+//     //第一个请求结束后进行第二个请求
+//     $.get(`https://api.github.com/users/${user}/repos`,data =>{
+//         console.log('detched user repos');
+//         console.log(data);
+//     })
+// });
+// 上面的链式调用能保证完成前一个请求后执行第二个请求，但是写法比较繁琐，一下是用promise监听
+// let username;
+// const usersPromise = axios.get('https://api.github.com/users');//会返回一个promise
+
+// usersPromise.then(reponse =>{//监听上面的promise事件,完成之后请求上一个
+//     username = reponse.data[0].login;
+//     return axios.get(`https://api.github.com/users/${user}/repos`);
+// }).then(response=>{
+//     console.log(reponse.data);
+// }).catch(err =>{
+//     console.log(err);
+// });
+
+
+//Symbol(数据类型)
+// const peter = Symbol('peter');//symbol生成唯一标识
+// const classRoom ={
+//     [Symbol('Lily')]: {grade: 60, gender: 'female'},
+//     [Symbol('Nina')]: {grade: 80, gender: 'female'},
+//     [Symbol('Nina')]: {grade: 90, gender: 'female'}
+// }
+// Object.keys(classRoom);//不能获取属性名
+// for(let key in classRoom){}//不能
+// Object.getOwnPropertyNames(classRoom);//不能
+// const syms = Object.getOwnPropertySymbols(classRoom);//遍历对象里属性名为symbol类型的属性
+// const syms = Object.getOwnPropertySymbols(classRoom).map(sym => classRoom[sym])
+
+
+//遍历器(迭代器)：一个对象，next()会返回给我们数据
+// 可遍历对象：部署了Symbol.iterator属性的对象，会返回一个遍历器
+//iterator
+// const colors = ['red','blue','green'];
+// const iterator = colors[Symbol.iterator]();//遍历器
+// const iterator = colors.entries();//返回他的属性名和值
+// const iterator = colors.keys();//返回索引值
+//完善values遍历器遍历元素
+// Array.prototype.values = function(){
+//     let i = 0;
+//     let items = this;
+
+//     return {//返回一个对象
+//         next:function(){
+//             const done = i >= items.length;
+//             const value = done ? undefined : items[i++]
+            
+//             return {
+//                 value,
+//                 done
+//             }
+//         }
+//     }
+// }
+// const iterator = colors.values();
+
+
+//Generator生成器
+// function* listColors(){//定义一个生成器函数
+//     yield 'red';//类似return本次return的值
+//     yield 'blue';
+//     yield 'green';
+
+//     let i = 0;
+//     yield i;
+//     i++;
+//     yield i;
+//     i++;
+//     yield i;
+// }
+// const colors = listColors();
+// console.log(colors.next());
+
+//Proxy重写默认的操作
+// const person ={
+//     name: 'zzz',
+//     age : 12
+// }
+// const personProxy = new Proxy(person,{
+//     get(target,key){
+//         // console.log('aaaa ',target, key);//对象，属性
+//         return target[key].toUpperCase();
+//     },
+//     set(target,key,value){//重置
+//         if(typeof value ==='string'){
+//             target[key] = value.trim();
+//         }
+//     }
+// })
+// personProxy.name ='ffffff';
+
+
+//集合类型 set map
+// set里面的元素不会有重复的元素，set不能通过索引值取值
+// const colors = new Set();
+// colors.add('red');
+// colors.add('freem');
+// colors.add('eeeee');
+// // colors.size;
+// // colors.delete('red')//删除
+// // colors.has(red);//是否存在
+ 
+// // console.log(colors.values().next());
+// // for(let color of colors){
+// //     console.log(color);
+// // }
+// colors.forEach((item,key,ownSet)=>{
+//     console.log(item,key,ownSet);
+// })
+
+// const fruits = new Set(['apple','banana','orange']);
+// const num = [1,2,3,4,5,3,2,3];
+// const numSet = new Set(num);
+// const uniqueNum = [...numSet];
+// console.log(uniqueNum)
+
+
+//WeakSet元素只能是对象，不能for of/forEach遍历，没有clear方法
+//自动清理机制
+// let jerry = {name: 'aaa',age: 12};
+// let marry = {name: 'bbb',age: 14};
+// const peo = new WeakSet([jerry,marry]);
+// jerry = null;
+
+
+//map存储的是键值对，键可以是任意类型
+// const people = new Map();
+// people.set('jerry',23);
+// people.set('marry',25);
+// people.set('midt',12);
+// people.delete('jerry');
+// people.forEach(function(value,key,map){
+//     console.log(value,key,map);
+// })
+// for(let [key,value] of people){
+//     console.log(key,value); 
+// }
+// const fruits = new Map([['apple',4],['banana',5]]);
+
+//WeakMap
+//没有size属性，不能循环，key只能是对象，其中元素没有被引用的话就会被垃圾回收机制回收
+let jerry = {name: 'aaa',age: 12};
+let marry = {name: 'bbb',age: 14};
+const strong = new Map();
+const weak = new WeakMap();
+
+</script>
+</body>
+</html>
