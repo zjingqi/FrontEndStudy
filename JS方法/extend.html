@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    公有原型；Target和Oringin的改变会相互影响
+    //圣杯模式：
+    function inhert(Target,Origin){
+        // Target.prototype = Origin.prototype;
+        function F(){};//添加一个新的构造函数
+        F.prototype = Origin.prototype;//F原型继承Target原型
+        Target.prototype = new F();//f.__proto__=>F.prototype;此时要修改Oringin.prototypr
+        //就得修改F.prototype,而Target.prototype改变会影响,并不会影响f.__proto__就不会影响F.prototype;
+        // 而当Origin.prototype改变时，F.prototype改变，f就会改变，自然Target就改变了；
+        Target.prototype.constructor = Target;//更正Target上正确的构造方法\
+        Target.prototype.uber = Origin.prototype//只想他的超类（继承自谁）
+
+    }
+    Father.prototype.lastName = 'Zhang' 
+    function Father(){} 
+    function Son(){}
+    inhert(Son,Father);
+    var son = new Son();
+
+
+    </script>
+</body>
+</html>

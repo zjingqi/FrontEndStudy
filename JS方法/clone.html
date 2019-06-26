@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var obj = {
+            name:'zjingqi',
+            sex:'15',
+            money:0,
+            status:['school','study','work'],
+            newObj:{
+                aa:{
+                    name:'jaja',
+                    age:34
+                }
+            }
+        }
+
+        function deepClone(target,origin){
+            var target = target || {};
+            for(var prop in origin){         
+                if(origin.hasOwnProperty(prop)){
+                    //对象和数组的存储方式还是不一样的
+                    if(Object.prototype.toString.call(origin[prop])=="[object Array]"){
+                        target[prop] = [];
+                        deepClone(target[prop],origin[prop]);
+                    }else if(origin[prop]!==null&&Object.prototype.toString.call(origin[prop])=="[object Object]"){
+                        target[prop] = {};
+                        deepClone(target[prop],origin[prop]);
+                    }else{
+                    target[prop] = origin[prop];
+                   }
+                }
+            }
+            return target;
+        }
+        var obj1 = {};
+        deepClone(obj1,obj);
+
+    </script>
+</body>
+</html>
